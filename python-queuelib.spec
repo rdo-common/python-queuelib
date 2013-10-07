@@ -3,7 +3,7 @@
 
 Name:           python-queuelib
 Version:        1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A collection of persistent (disk-based) queues
 
 License:        BSD
@@ -20,13 +20,13 @@ Queuelib is a collection of persistent (disk-based) queues for
 Python. Queuelib goals are speed and simplicity.
 
 %if 0%{?with_python3}
-%package -n python3-%{name}
+%package -n python3-%{srcname}
 Summary:        A collection of persistent (disk-based) queues
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-nose
 
-%description -n python3-%{name}
+%description -n python3-%{srcname}
 Queuelib is a collection of persistent (disk-based) queues for
 Python. Queuelib goals are speed and simplicity.
 %endif # if with_python3
@@ -72,13 +72,16 @@ popd
 
 %if 0%{?with_python3}
 # Python 3
-%files -n python3-%{name}
+%files -n python3-%{srcname}
 %doc LICENSE NEWS README.rst
 %{python3_sitelib}/%{srcname}/
 %{python3_sitelib}/%{srcname}*.egg-info
 %endif # with_python3
 
 %changelog
+* Mon Oct 07 2013 Fabian Affolter <mail@fabian-affolter.ch> - 1.0-3
+- Naming of Py3 package updated
+
 * Mon Sep 09 2013 Fabian Affolter <mail@fabian-affolter.ch> - 1.0-2
 - Python macro updated
 
