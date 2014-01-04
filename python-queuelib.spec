@@ -2,8 +2,8 @@
 %global srcname queuelib
 
 Name:           python-queuelib
-Version:        1.0
-Release:        3%{?dist}
+Version:        1.1.1
+Release:        1%{?dist}
 Summary:        A collection of persistent (disk-based) queues
 
 License:        BSD
@@ -79,6 +79,9 @@ popd
 %endif # with_python3
 
 %changelog
+* Sat Jan 04 2014 Fabian Affolter <mail@fabian-affolter.ch> - 1.1.1-1
+- Update to latest upstream release 1.1.1
+
 * Mon Oct 07 2013 Fabian Affolter <mail@fabian-affolter.ch> - 1.0-3
 - Naming of Py3 package updated
 
