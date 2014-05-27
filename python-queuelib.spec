@@ -3,7 +3,7 @@
 
 Name:           python-queuelib
 Version:        1.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of persistent (disk-based) queues
 
 License:        BSD
@@ -79,6 +79,9 @@ popd
 %endif # with_python3
 
 %changelog
+* Wed May 28 2014 Kalev Lember <kalevlember@gmail.com> - 1.1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
+
 * Sat Jan 04 2014 Fabian Affolter <mail@fabian-affolter.ch> - 1.1.1-1
 - Update to latest upstream release 1.1.1
 
