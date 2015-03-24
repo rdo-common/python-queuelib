@@ -2,8 +2,8 @@
 %global srcname queuelib
 
 Name:           python-queuelib
-Version:        1.1.1
-Release:        3%{?dist}
+Version:        1.2.2
+Release:        1%{?dist}
 Summary:        A collection of persistent (disk-based) queues
 
 License:        BSD
@@ -79,6 +79,9 @@ popd
 %endif # with_python3
 
 %changelog
+* Tue Mar 24 2015 Fabian Affolter <mail@fabian-affolter.ch> - 1.2.2-1
+- Update to latest upstream release 1.2.2
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
