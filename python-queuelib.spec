@@ -1,10 +1,10 @@
-%global with_python3 1
 %global srcname queuelib
+%global sum A collection of persistent (disk-based) queues
 
 Name:           python-queuelib
-Version:        1.2.2
-Release:        3%{?dist}
-Summary:        A collection of persistent (disk-based) queues
+Version:        1.4.2
+Release:        1%{?dist}
+Summary:        %{sum}
 
 License:        BSD
 URL:            https://github.com/scrapy/queuelib
@@ -12,73 +12,66 @@ Source0:        https://pypi.python.org/packages/source/q/%{srcname}/%{srcname}-
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-nose
+BuildRequires:  python2-nose
+BuildRequires:  python3-devel
+BuildRequires:  python3-nose
 
 %description
 Queuelib is a collection of persistent (disk-based) queues for
 Python. Queuelib goals are speed and simplicity.
 
-%if 0%{?with_python3}
+%package -n python2-%{srcname}
+Summary:        %{sum}
+%{?python_provide:%python_provide python2-%{srcname}}
+
+%description -n python2-%{srcname}
+Queuelib is a collection of persistent (disk-based) queues for
+Python. Queuelib goals are speed and simplicity.
+
 %package -n python3-%{srcname}
-Summary:        A collection of persistent (disk-based) queues
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-nose
+Summary:        %{sum}
+%{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
 Queuelib is a collection of persistent (disk-based) queues for
 Python. Queuelib goals are speed and simplicity.
-%endif # if with_python3
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-%endif # if with_python3
+%autosetup -n %{srcname}-%{version}
 
 %build
-%{__python2} setup.py build
-%if 0%{?with_python3}
-# Python 3
-pushd %{py3dir}
-%{__python3} setup.py build
-popd
-%endif # if with_python3
+%py2_build
+%py3_build
 
 %install
-%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
-%if 0%{?with_python3}
-# Python 3
-pushd %{py3dir}
-%{__python3} setup.py install -O1 --skip-build --root %{buildroot}
-popd
-%endif # if with_python3
+%py2_install
+%py3_install
 
 %check
 nosetests queuelib/tests
 %if 0%{?with_python3}
-# Python 3
 pushd %{py3dir}
 nosetests queuelib/tests
 popd
 %endif # if with_python3
 
-%files
-%doc LICENSE NEWS README.rst
+%files -n python2-%{srcname}
+%doc NEWS README.rst
+%license LICENSE
 %{python_sitelib}/%{srcname}/
 %{python_sitelib}/%{srcname}*.egg-info
 
-%if 0%{?with_python3}
-# Python 3
 %files -n python3-%{srcname}
-%doc LICENSE NEWS README.rst
+%doc NEWS README.rst
+%license LICENSE
 %{python3_sitelib}/%{srcname}/
 %{python3_sitelib}/%{srcname}*.egg-info
-%endif # with_python3
 
 %changelog
+* Sat Nov 14 2015  Fabian Affolter <mail@fabian-affolter.ch> - 1.4.2-1
+- Cleanup
+- Upate to latest upstream release 1.4.2
+
 * Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
 
