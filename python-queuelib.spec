@@ -12,8 +12,8 @@ Source0:        https://pypi.python.org/packages/source/q/%{srcname}/%{srcname}-
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python2-nose
 BuildRequires:  python3-devel
+BuildRequires:  python2-nose
 BuildRequires:  python3-nose
 
 %description
@@ -49,11 +49,6 @@ Python. Queuelib goals are speed and simplicity.
 
 %check
 nosetests queuelib/tests
-%if 0%{?with_python3}
-pushd %{py3dir}
-nosetests queuelib/tests
-popd
-%endif # if with_python3
 
 %files -n python2-%{srcname}
 %doc NEWS README.rst
