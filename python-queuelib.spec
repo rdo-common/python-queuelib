@@ -54,8 +54,8 @@ nosetests queuelib/tests
 %files -n python2-%{srcname}
 %doc NEWS README.rst
 %license LICENSE
-%{python_sitelib}/%{srcname}/
-%{python_sitelib}/%{srcname}*.egg-info
+%{python2_sitelib}/%{srcname}/
+%{python2_sitelib}/%{srcname}*.egg-info
 
 %files -n python3-%{srcname}
 %doc NEWS README.rst
