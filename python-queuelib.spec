@@ -3,7 +3,7 @@
 
 Name:           python-queuelib
 Version:        1.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        BSD
@@ -64,6 +64,9 @@ nosetests queuelib/tests
 %{python3_sitelib}/%{srcname}*.egg-info
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Sat Nov 14 2015  Fabian Affolter <mail@fabian-affolter.ch> - 1.4.2-1
 - Cleanup
 - Upate to latest upstream release 1.4.2
