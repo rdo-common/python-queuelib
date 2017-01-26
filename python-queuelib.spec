@@ -12,9 +12,7 @@ Source0:        https://pypi.python.org/packages/source/q/%{srcname}/%{srcname}-
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python3-devel
 BuildRequires:  python2-nose
-BuildRequires:  python3-nose
 BuildRequires:  pytest
 
 %description
@@ -29,24 +27,14 @@ Summary:        %{sum}
 Queuelib is a collection of persistent (disk-based) queues for
 Python. Queuelib goals are speed and simplicity.
 
-%package -n python3-%{srcname}
-Summary:        %{sum}
-%{?python_provide:%python_provide python3-%{srcname}}
-
-%description -n python3-%{srcname}
-Queuelib is a collection of persistent (disk-based) queues for
-Python. Queuelib goals are speed and simplicity.
-
 %prep
 %autosetup -n %{srcname}-%{version}
 
 %build
 %py2_build
-%py3_build
 
 %install
 %py2_install
-%py3_install
 
 %check
 nosetests queuelib/tests
@@ -56,12 +44,6 @@ nosetests queuelib/tests
 %license LICENSE
 %{python2_sitelib}/%{srcname}/
 %{python2_sitelib}/%{srcname}*.egg-info
-
-%files -n python3-%{srcname}
-%doc NEWS README.rst
-%license LICENSE
-%{python3_sitelib}/%{srcname}/
-%{python3_sitelib}/%{srcname}*.egg-info
 
 %changelog
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.4.2-4
